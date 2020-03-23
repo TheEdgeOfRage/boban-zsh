@@ -29,10 +29,9 @@
 # A few utility functions to make it easy and re-usable to draw segmented prompts
 
 CURRENT_BG='NONE'
-DEFAULT_USER='pavle'
+DEFAULT_USER=${DEFAULT_USER:-default}
 
 # Special Powerline characters
-
 () {
 	local LC_ALL="" LC_CTYPE="en_US.UTF-8"
 	# NOTE: This segment separator character is correct.  In 2012, Powerline changed
