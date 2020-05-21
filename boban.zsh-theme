@@ -203,6 +203,10 @@ prompt_status() {
 	#[[ -n "$symbols" ]] && prompt_segment "$symbols"
 }
 
+prompt_time() {
+	prompt_segment background default $(date "+%H:%M:%S")
+}
+
 ## Main prompt
 build_prompt() {
 	#RETVAL=$?
@@ -220,6 +224,7 @@ build_rprompt() {
 	RETVAL=$?
 	prompt_status
 	prompt_endr
+	prompt_time
 }
 
 PROMPT='%{%f%b%k%}$(build_prompt) '
