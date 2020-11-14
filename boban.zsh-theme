@@ -152,6 +152,17 @@ prompt_virtualenv() {
 	fi
 }
 
+# Terraform: current terraform workspace
+prompt_tf() {
+	# dont show 'default' workspace in home dir
+	[[ "$PWD" == ~ ]] && return
+	# check if in terraform dir
+	if [ -d .terraform ]; then
+		workspace=$(terraform workspace show 2> /dev/null) || return
+		prompt_segment magenta black "[${workspace}]"
+	fi
+}
+
 # Status:
 # - was there an error
 # - am I root
@@ -179,6 +190,7 @@ build_prompt() {
 	prompt_virtualenv
 	prompt_context
 	prompt_dir
+	prompt_tf
 	prompt_git
 	prompt_end
 }
