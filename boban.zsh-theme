@@ -131,7 +131,7 @@ prompt_virtualenv() {
 prompt_aws() {
 	local aws_profile="$AWS_PROFILE"
 	if [[ -n $aws_profile ]]; then
-		prompt_segment black yellow "($aws_profile)"
+		prompt_segment black yellow "  $aws_profile"
 	fi
 }
 
@@ -142,7 +142,7 @@ prompt_tf() {
 	# check if in terraform dir
 	if [ -d .terraform ]; then
 		workspace=$(terraform workspace show 2> /dev/null) || return
-		prompt_segment magenta black "[${workspace}]"
+		prompt_segment black magenta "[${workspace}]"
 	fi
 }
 
@@ -170,10 +170,10 @@ prompt_time() {
 build_prompt() {
 	#RETVAL=$?
 	#prompt_status
-	prompt_virtualenv
-	prompt_aws
 	prompt_context
+	prompt_aws
 	prompt_dir
+	prompt_virtualenv
 	# prompt_tf
 	prompt_git
 	prompt_end
