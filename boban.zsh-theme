@@ -174,7 +174,7 @@ build_prompt() {
 	prompt_aws
 	prompt_dir
 	prompt_virtualenv
-	# prompt_tf
+	prompt_tf
 	prompt_git
 	prompt_end
 }
