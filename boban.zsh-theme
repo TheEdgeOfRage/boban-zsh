@@ -148,9 +148,8 @@ prompt_tf() {
 
 # Kubectl: current active kubeconfig file
 prompt_kubectl() {
-	local kubeconfig="$KUBECONFIG"
-	if [[ -n $kubeconfig ]]; then
-		prompt_segment magenta black "${config_name}"
+	if [[ -n $KUBECONFIG ]]; then
+		prompt_segment magenta black "$(basename $KUBECONFIG)"
 	fi
 }
 
