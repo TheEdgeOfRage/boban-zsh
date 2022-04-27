@@ -146,6 +146,14 @@ prompt_tf() {
 	fi
 }
 
+# Kubectl: current active kubeconfig file
+prompt_kubectl() {
+	local kubeconfig="$KUBECONFIG"
+	if [[ -n $kubeconfig ]]; then
+		prompt_segment magenta black "${config_name}"
+	fi
+}
+
 # Status:
 # - was there an error
 # - am I root
@@ -174,6 +182,7 @@ build_prompt() {
 	prompt_aws
 	prompt_dir
 	prompt_virtualenv
+	prompt_kubectl
 	prompt_tf
 	prompt_git
 	prompt_end
