@@ -131,7 +131,7 @@ prompt_virtualenv() {
 prompt_aws() {
 	local aws_profile="$AWS_PROFILE"
 	if [[ -n $aws_profile ]]; then
-		prompt_segment black yellow "  $aws_profile"
+		prompt_segment black yellow "󰸏 $aws_profile"
 	fi
 }
 
@@ -142,14 +142,14 @@ prompt_tf() {
 	# check if in terraform dir
 	if [ -d .terraform ]; then
 		workspace=$(terraform workspace show 2> /dev/null) || return
-		prompt_segment black magenta "[${workspace}]"
+		prompt_segment black magenta "󱁢 ${workspace}"
 	fi
 }
 
 # Kubectl: current active kubeconfig file
 prompt_kubectl() {
 	if [[ -n $KUBECONFIG ]]; then
-		prompt_segment magenta black "$(basename $KUBECONFIG)"
+		prompt_segment magenta black "󱃾 $(basename $KUBECONFIG)"
 	fi
 }
 
@@ -178,9 +178,9 @@ build_prompt() {
 	#RETVAL=$?
 	#prompt_status
 	prompt_context
-	prompt_aws
 	prompt_dir
 	prompt_virtualenv
+	prompt_aws
 	prompt_kubectl
 	prompt_tf
 	prompt_git
