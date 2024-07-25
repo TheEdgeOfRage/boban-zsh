@@ -154,19 +154,17 @@ prompt_kubectl() {
 }
 
 # Status:
-# - was there an error
-# - am I root
+# - was there an error?
+# - am I root?
 # - are there background jobs?
 prompt_status() {
 	local symbols
 	symbols=()
-	#[[ $RETVAL -ne 0 ]] && symbols+="%{$fg_bold[red]%}$RETVAL%{%b%}"
 	[ $RETVAL -ne 0 ] && symbols+="%{%F{red}%}$RETVAL"
 	[ $UID -eq 0 ] && symbols+="%{%F{yellow}%}⚡"
 	[ $(jobs -l | wc -l) -gt 0 ] && symbols+="%{%F{cyan}%}⚙"
 
 	[ -n "$symbols" ] && prompt_segment background default "$symbols"
-	#[[ -n "$symbols" ]] && prompt_segment "$symbols"
 }
 
 prompt_time() {
@@ -175,8 +173,6 @@ prompt_time() {
 
 ## Main prompt
 build_prompt() {
-	#RETVAL=$?
-	#prompt_status
 	prompt_context
 	prompt_dir
 	prompt_virtualenv
