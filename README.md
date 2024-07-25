@@ -11,7 +11,11 @@ directory in your oh-my-zsh installation and set `ZSH_THEME="boban/boban"` in yo
 
 You also need to have a [Nerdfont](https://www.nerdfonts.com/) to have all the symbols show up properly.
 
-## Configuration
+## Usage
+
+The prompt segments will hide themselves when there is no relevant env vars set for them, or you are not in a
+directory that has a git repo or terraform workspace. With nothing set, only the user@host and working directory
+segments will show up.
 
 You can set the `DEFAULT_USER` env var to your username in your zshrc before loading this theme to stop showing the
 first prompt segment when you are on your main user. It will always show when you are ssh-ed into the host where the
