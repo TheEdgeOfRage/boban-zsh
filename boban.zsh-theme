@@ -161,11 +161,11 @@ prompt_status() {
 	local symbols
 	symbols=()
 	#[[ $RETVAL -ne 0 ]] && symbols+="%{$fg_bold[red]%}$RETVAL%{%b%}"
-	[[ $RETVAL -ne 0 ]] && symbols+="%{%F{red}%}$RETVAL"
-	[[ $UID -eq 0 ]] && symbols+="%{%F{yellow}%}⚡"
-	[[ $(jobs -l | wc -l) -gt 0 ]] && symbols+="%{%F{cyan}%}⚙"
+	[ $RETVAL -ne 0 ] && symbols+="%{%F{red}%}$RETVAL"
+	[ $UID -eq 0 ] && symbols+="%{%F{yellow}%}⚡"
+	[ $(jobs -l | wc -l) -gt 0 ] && symbols+="%{%F{cyan}%}⚙"
 
-	[[ -n "$symbols" ]] && prompt_segment background default "$symbols"
+	[ -n "$symbols" ] && prompt_segment background default "$symbols"
 	#[[ -n "$symbols" ]] && prompt_segment "$symbols"
 }
 
